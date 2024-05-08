@@ -1,7 +1,6 @@
 def input_error(func):
     def inner(*args, **kwargs):
         try:
-            print(*args,*kwargs)
             return func(*args, **kwargs)
         except ValueError:
             return "Give me name and phone please."
@@ -37,13 +36,12 @@ def change_contact(args, contacts):
 
 @input_error
 def get_phone(args, contacts):
-    # if not args == []: 
+    if not args == []:
         name = args[0]
         if name in contacts:
-            phone = contacts.get(name)
-        return phone
-    # else:
-    #     return f"Contact {name} not found!"
+            return contacts.get(name)
+    else:
+        return f"Contact not found!"
 
 def main():
     contacts = {}
@@ -68,8 +66,9 @@ def main():
         elif command == "phone":
             print(get_phone(args, contacts))
         elif command == "all":
-           for key, value in contacts.items():
-               print(f'{key}: {value}')
+            # print(show_contacts(contacts))
+            for key, value in contacts.items():
+                print(f'{key}: {value}')
         else:
             print("Invalid command.")
 

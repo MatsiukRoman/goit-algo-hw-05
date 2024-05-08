@@ -3,7 +3,7 @@ from typing import Callable
 
 
 def generator_numbers(text: str):
-    pattern = r" \d+[.,]?\d+"
+    pattern = r" \d+\.\d+ "
     salaries = findall(pattern, text)
     for salary in salaries:
         salary = float(salary.strip())

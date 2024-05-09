@@ -12,12 +12,12 @@ def input_error(func):
     return inner
 
 def parse_input(user_input):
-    try:
+    # try:
         cmd, *args = user_input.split()
         cmd = cmd.strip().lower()
         return cmd, *args
-    except Exception:
-        return {}
+    # except Exception:
+        # return {}
 
 @input_error
 def add_contact(args, contacts):
@@ -49,10 +49,11 @@ def main():
     while True:
         user_input = input("Enter a command: ")
                 
+        
         if not user_input or user_input.strip() == "": # Check for empty input
             command = ""
         else:  
-           command, *args = parse_input(user_input)
+            command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
             print("Good bye!")
